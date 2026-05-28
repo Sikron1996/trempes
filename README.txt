@@ -1,0 +1,1 @@
+FOMO MEN X3DYS-style website. Replace PASTE_CONTRACT_ADDRESS_HERE in app.js with your contract address.
