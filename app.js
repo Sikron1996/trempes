@@ -3,7 +3,7 @@
 // 2) Paste the contract address below
 // 3) Upload this folder to Vercel / Netlify / GitHub Pages
 
-const CONTRACT_ADDRESS = "PASTE_CONTRACT_ADDRESS_HERE";
+const CONTRACT_ADDRESS = "0xa90C81909ed1F5f5037d1a3c3EB02017a83EFA3E";
 const PRICE_PER_TOKEN_ETH = "0.00005";
 const MAX_SUPPLY = 100000;
 const MAX_PER_WALLET = 1000;
