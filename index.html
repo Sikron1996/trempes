@@ -1,155 +1,127 @@
-<!doctype html>
-<html lang="uk">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tripper Punks</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRIPUNK Token</title>
+  <meta name="description" content="TRIPUNK ERC-20 token mint. 100,000 supply, 0.00005 ETH per token, 1,000 max per wallet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
-<div class="glow g-left"></div>
-<div class="glow g-right"></div>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a href="#home" class="brand">✦ TRIPUNK TOKEN</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#mint">Mint</a>
+      <a href="#roadmap">Road map</a>
+      <a href="https://x.com/monadnft123" target="_blank" rel="noreferrer">X.COM</a>
+    </nav>
+    <button class="small-btn" id="connectTop">Connect Wallet</button>
+  </header>
 
-<header class="nav">
-  <div class="logo"><span>✦</span> TRIPPER PUNKS</div>
-  <nav>
-    <a href="https://opensea.io/collection/tripperpunks">OpenSea</a>
-    <a href="#about">About</a>
-    <a href="#mint">Mint</a>
-    <a href="https://x.com/ascpunk">X.COM</a>
-  </nav>
-  <button id="topConnect">Connect Wallet</button>
-</header>
-
-<main id="home">
-  <section class="hero">
-    <h1><span>Get started with</span> Tripper Punks<br>your NFT metaverse</h1>
-    <div class="hero-strip">
-      <img src="assets/nft1.jpg">
-      <img src="assets/nft2.jpg">
-      <img src="assets/nft3.jpg">
-      <img src="assets/nft4.jpg">
-      <img src="assets/nft5.jpg">
-    </div>
-  </section>
-
-  <section id="mint" class="mint-section">
-    <div class="mint-copy">
-      <h2>Mint your <span>NFTs</span></h2>
-      <p>Tripper Punks is a psychedelic NFT collection for true degens. First mint is free per wallet, next mints are 0.0001 ETH. Built for community, vibes and punk culture.</p>
-
-      <div class="mint-meta">
-        <div>
-          <b>Mint Price</b>
-          <strong>FREE / 0.0001 ETH</strong>
-          <small>First one free</small>
-        </div>
-        <div>
-          <b>Minted</b>
-          <strong><em id="mintedText">0</em> / 10,000</strong>
-          <small id="remainingText">10,000 remaining</small>
+  <main id="home">
+    <section class="hero section">
+      <div class="hero-copy">
+        <p class="eyebrow">ERC-20 COMMUNITY MINT</p>
+        <h1>Get started with <span>TRIPUNK</span></h1>
+        <p class="lead">your punk token metaverse</p>
+        <div class="hero-actions">
+          <a href="#mint" class="primary-link">Mint Token</a>
+          <a href="#about" class="ghost-link">Learn More</a>
         </div>
       </div>
 
-      <div class="mint-actions">
-        <div class="amount">
+      <div class="punk-stage" aria-label="TRIPUNK preview">
+        <div class="punk-card p1"><img src="assets/punk-1.svg" alt="TRIPUNK punk 1"></div>
+        <div class="punk-card p2"><img src="assets/punk-2.svg" alt="TRIPUNK punk 2"></div>
+        <div class="punk-card p3"><img src="assets/punk-3.svg" alt="TRIPUNK punk 3"></div>
+        <div class="punk-card p4"><img src="assets/punk-4.svg" alt="TRIPUNK punk 4"></div>
+      </div>
+    </section>
+
+    <section class="section mint-grid" id="mint">
+      <div class="mint-copy">
+        <p class="eyebrow">PUBLIC TOKEN SALE</p>
+        <h2>Mint your TRIPUNK tokens</h2>
+        <p>TRIPUNK is a fair ERC-20 token mint for true degens. Mint directly from the smart contract. No private sale. No hidden allocation.</p>
+        <div class="token-strip">
+          <div><span>Mint Price</span><b>0.00005 ETH</b></div>
+          <div><span>Supply</span><b>100,000</b></div>
+          <div><span>Wallet limit</span><b>1,000</b></div>
+        </div>
+      </div>
+
+      <div class="mint-box">
+        <div class="mint-head">
+          <div>
+            <span>Minted</span>
+            <strong id="mintedText">0 / 100,000</strong>
+          </div>
+          <div>
+            <span>Remaining</span>
+            <strong id="remainingText">100,000</strong>
+          </div>
+        </div>
+
+        <div class="progress"><div id="progressFill"></div></div>
+
+        <div class="qty-row">
           <button id="minus">−</button>
-          <input id="amount" value="1">
+          <input id="amount" type="number" min="1" max="1000" value="1" />
           <button id="plus">+</button>
         </div>
 
-        <button id="connectBtn">Connect Wallet</button>
-        <button id="mintBtn">Mint NFT</button>
+        <button class="mint-btn" id="connectBtn">Connect Wallet</button>
+        <button class="mint-btn secondary" id="mintBtn">Mint Token</button>
+
+        <div class="total">Total: <span id="totalText">0.00005 ETH</span></div>
+        <div class="wallet" id="walletText">not connected</div>
+        <div class="hint" id="statusText">Paste contract address in app.js before launch.</div>
       </div>
+    </section>
 
-      <div class="total">Total: <b id="totalPrice">FREE</b></div>
-      <p id="wallet">not connected</p>
-      <p id="status"></p>
-    </div>
-
-    <div class="mint-preview">
-      <img id="mainImage" src="assets/nft3.jpg">
-    </div>
-  </section>
-
-  <section id="about" class="how">
-    <h2>How to <span>mint</span></h2>
-    <div class="steps">
-      <div><b>1.</b><h3>Download crypto-wallet ↗</h3><p>Install MetaMask, Rabby, OKX or use WalletConnect from your phone.</p></div>
-      <div><b>2.</b><h3>Connect Wallet ↗</h3><p>Press connect and choose browser wallet or mobile wallet.</p></div>
-      <div><b>3.</b><h3>Select quantity ↗</h3><p>First mint is free, next mints are paid automatically.</p></div>
-      <div><b>4.</b><h3>Confirm transaction ↗</h3><p>Approve in wallet and secure your Tripper Punk NFT.</p></div>
-    </div>
-  </section>
-
-  <section class="roadmap">
-    <h2>Road<span>map</span></h2>
-    <div class="timeline">
-      <button class="active">Q1</button>
-      <button>Q2</button>
-      <button>Q3</button>
-      <button>2026</button>
-    </div>
-    <h3>Q1</h3>
-    <b>The next gen of Tripper Punks</b>
-    <p>Launch the collection, build a strong holder base and open the first community tools.</p>
-  </section>
-
-  <section class="faq">
-    <h2><span>Frequently</span> Answer Questions</h2>
-    <div class="faq-grid">
-      <details open><summary>What is Tripper Punks?</summary><p>Tripper Punks is a 10,000 supply NFT collection with a free first mint and 0.0001 ETH next mints.</p></details>
-      <details><summary>Where can I trade the NFTs?</summary><p>After mint, trade on OpenSea and other Ethereum NFT marketplaces.</p></details>
-      <details><summary>What is the mint price?</summary><p>First mint is free per wallet. Next mints are 0.0001 ETH.</p></details>
-      <details><summary>What is the collection supply?</summary><p>10,000 NFTs.</p></details>
-    </div>
-  </section>
-
-  <section class="gallery">
-    <h2><span>NFT</span> Gallery</h2>
-    <div class="gallery-row">
-      <button id="galleryPrev">‹</button>
-      <div class="gallery-window">
-        <img src="assets/nft1.jpg">
-        <img src="assets/nft2.jpg">
-        <img src="assets/nft3.jpg">
-        <img src="assets/nft4.jpg">
+    <section class="section steps" id="about">
+      <h2>How to mint</h2>
+      <div class="step-grid">
+        <article><b>1.</b><h3>Download crypto-wallet ↗</h3><p>Install MetaMask, Rabby, OKX or use a wallet browser from your phone.</p></article>
+        <article><b>2.</b><h3>Connect Wallet ↗</h3><p>Press connect and choose browser wallet or mobile wallet.</p></article>
+        <article><b>3.</b><h3>Select quantity ↗</h3><p>Choose how many TRIPUNK tokens you want to mint, max 1,000 per wallet.</p></article>
+        <article><b>4.</b><h3>Confirm transaction ↗</h3><p>Approve in wallet and receive ERC-20 TRIPUNK tokens.</p></article>
       </div>
-      <button id="galleryNext">›</button>
+    </section>
+
+    <section class="section roadmap" id="roadmap">
+      <h2>Road map</h2>
+      <div class="road-card"><span>Q1 2026</span><h3>Launch TRIPUNK</h3><p>Deploy the token, open the community mint and build a strong holder base.</p></div>
+      <div class="road-card"><span>Q2 2026</span><h3>Community tools</h3><p>Holder snapshots, token utility and new punk experiments.</p></div>
+      <div class="road-card"><span>Q3 2026</span><h3>Next phase</h3><p>Expand the TRIPUNK universe with more community-driven mechanics.</p></div>
+    </section>
+
+    <section class="section faq">
+      <h2>Frequently Answer Questions</h2>
+      <details open><summary>What is TRIPUNK?</summary><p>TRIPUNK is a 100,000 supply ERC-20 token that can be minted through the website.</p></details>
+      <details><summary>What is the mint price?</summary><p>0.00005 ETH per 1 TRIPUNK token.</p></details>
+      <details><summary>What is the wallet limit?</summary><p>Maximum 1,000 TRIPUNK tokens per wallet.</p></details>
+      <details><summary>Where will the token show?</summary><p>After mint, add the token contract address to MetaMask or another wallet to see your balance.</p></details>
+    </section>
+  </main>
+
+  <footer>
+    <h3>Stay Connected</h3>
+    <p>Follow TRIPUNK updates and community news.</p>
+    <div class="footer-links">
+      <a href="https://x.com/monadnft123" target="_blank" rel="noreferrer">Twitter ↗</a>
+      <a href="#mint">Mint ↗</a>
+      <a href="#about">Whitepaper ↗</a>
     </div>
-  </section>
+    <small>TRIPUNK © 2026 All Rights Reserved</small>
+  </footer>
 
-  <section id="community" class="subscribe">
-    <div>
-      <h3>Stay Connected</h3>
-      <p>Follow Tripper Punks updates and community news.</p>
-    </div>
-    <div class="email">
-      <input placeholder="E-mail">
-      <button>Subscribe</button>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div>
-    <a>Twitter ↗</a>
-    <a>Discord ↗</a>
-    <a>Telegram ↗</a>
-    <a>Whitepaper ↗</a>
-  </div>
-  <p>Tripper Punks © 2026 All Rights Reserved</p>
-</footer>
-
-<div id="walletModal" class="modal hidden">
-  <div class="modal-card">
-    <button id="closeModalBtn" class="close">×</button>
-    <h3>Connect Wallet</h3>
-    <button id="browserWalletBtn">MetaMask / Rabby / OKX</button>
-    <button id="walletConnectBtn">WalletConnect / Mobile</button>
-  </div>
-</div>
-
-<script type="module" src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
